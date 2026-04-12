@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Dharma Gate | 法门</title>
+  <meta name="description" content="A gateway to nine of Buddhism's most important scriptures — presented in English and Chinese for study, reflection, and practice.">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1c0f0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Dharma Gate">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================
+       TOKENS / VARIABLES
+    ===================== */
+    :root {
+      --bg:         #f7f0e6;
+      --surface:    #ffffff;
+      --ink:        #1c0f0f;
+      --ink-light:  #2d1a1a;
+      --red:        #b83232;
+      --red-light:  #d44e4e;
+      --saffron:    #c8820a;
+      --saffron-lt: #e09c2a;
+      --text:       #2d1f1f;
+      --muted:      #7a6060;
+      --border:     #e0d0c8;
+      --radius:     8px;
+    }
+
+    /* =====================
+       RESET & BASE
+    ===================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* =====================
+       SKIP LINK
+    ===================== */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--red);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 4px 4px;
+      font-weight: bold;
+      z-index: 9999;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* =====================
+       HEADER / NAV
+    ===================== */
+    .site-header {
+      background: var(--ink);
+      color: #fff;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo-en {
+      font-family: "Noto Serif SC", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--red-light);
+      letter-spacing: 0.02em;
+    }
+
+    .logo-zh {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.25em;
+    }
+
+    .site-header nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .site-header nav a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .site-header nav a:hover,
+    .site-header nav a:focus {
+      color: var(--red-light);
+    }
+
+    /* =====================
+       HERO
+    ===================== */
+    .hero {
+      background: var(--ink-light);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "法";
+      position: absolute;
+      font-family: "Noto Serif SC", serif;
+      font-size: 22rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-tagline-zh {
+      font-size: 0.9rem;
+      letter-spacing: 0.45em;
+      color: var(--saffron-lt);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: "Noto Serif SC", serif;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+
+    /* =====================
+       DIVIDER
+    ===================== */
+    .divider {
+      text-align: center;
+      padding: 2.5rem 1rem 0.5rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      letter-spacing: 0.28em;
+    }
+
+    .divider::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin: 0.6rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* =====================
+       SCRIPTURE CARDS
+    ===================== */
+    .cards-section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .site-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    .card-symbol {
+      font-family: "Noto Serif SC", serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .card-category {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: -0.25rem;
+    }
+
+    .card-titles {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .card-zh {
+      font-family: "Noto Serif SC", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .card-en {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--red);
+      letter-spacing: 0.03em;
+    }
+
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 0.2rem 0.65rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--red);
+      border: 1px solid var(--red);
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      width: fit-content;
+      min-height: 44px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .card-link:hover,
+    .card-link:focus {
+      background: var(--red);
+      color: #fff;
+    }
+
+    /* =====================
+       COMING SOON BADGE
+    ===================== */
+    .coming-soon-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.25rem 0.75rem;
+      margin-top: 0.25rem;
+      background: var(--bg);
+      width: fit-content;
+    }
+
+    /* =====================
+       ABOUT STRIP
+    ===================== */
+    .about-strip {
+      background: var(--ink);
+      color: rgba(255,255,255,0.72);
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .about-strip h2 {
+      font-family: "Noto Serif SC", serif;
+      font-size: 1.3rem;
+      color: var(--saffron-lt);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .about-strip p {
+      max-width: 620px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: #100808;
+      color: rgba(255,255,255,0.28);
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* =====================
+       RESPONSIVE — TABLET
+    ===================== */
+    @media (max-width: 768px) {
+      .cards-section {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        padding: 1.5rem 1.5rem 3rem;
+        gap: 1.25rem;
+      }
+    }
+
+    /* =====================
+       RESPONSIVE — MOBILE
+    ===================== */
+    @media (max-width: 600px) {
+      .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.25rem;
+      }
+
+      .site-header nav {
+        gap: 1.25rem;
+      }
+
+      .hero {
+        padding: 3.5rem 1.5rem 3rem;
+      }
+
+      .hero::before {
+        font-size: 14rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+      }
+
+      .cards-section {
+        grid-template-columns: 1fr;
+        padding: 1rem 1rem 2.5rem;
+        gap: 1rem;
+      }
+
+      .site-card {
+        padding: 1.5rem 1.25rem;
+      }
+    }
+
+    /* =====================
+       RESPONSIVE — SMALL MOBILE
+    ===================== */
+    @media (max-width: 360px) {
+      .logo-en { font-size: 1.1rem; }
+      .divider { letter-spacing: 0.15em; }
+    }
+
+    /* =====================
+       SAFE AREA (iPhone notch / home bar)
+    ===================== */
+    @supports (padding: max(0px)) {
+      .site-header {
+        padding-left: max(2rem, env(safe-area-inset-left));
+        padding-right: max(2rem, env(safe-area-inset-right));
+      }
+      footer {
+        padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-en">The Dharma Gate</span>
+      <span class="logo-zh">法门无量</span>
+    </div>
+    <nav aria-label="Site navigation">
+      <a href="#scriptures">Scriptures</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Introduction">
+    <p class="hero-tagline-zh">戒 · 定 · 慧</p>
+    <h1>Buddhist Scriptures<br>for Study, Reflection, and Practice</h1>
+    <p>
+      A growing collection of Buddhism's most essential texts — presented in English and Chinese,
+      spanning the Theravada, Mahayana, and Vajrayana traditions.
+    </p>
+  </section>
+
+  <!-- SCRIPTURE CARDS -->
+  <main id="main-content">
+    <div class="divider" id="scriptures">SCRIPTURE COLLECTION · 佛经典籍</div>
+
+    <div class="cards-section">
+
+      <!-- 1. Heart Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">心</div>
+        <p class="card-category">Mahayana · 大乘</p>
+        <div class="card-titles">
+          <span class="card-zh">般若波罗蜜多心经</span>
+          <span class="card-en">Heart Sutra</span>
+        </div>
+        <p class="card-desc">
+          The most widely recited Buddhist text in the world. In 260 Chinese characters, it reveals the doctrine of emptiness — "form is emptiness, emptiness is form" — chanted daily in temples across East Asia.
+        </p>
+        <div class="card-tags">
+          <span class="tag">空 Emptiness</span>
+          <span class="tag">Prajnaparamita</span>
+          <span class="tag">260 Characters</span>
+        </div>
+        <a href="https://lugh3456.github.io/HeartSutra/" class="card-link" target="_blank" rel="noopener">Explore Heart Sutra →</a>
+      </article>
+
+      <!-- 2. Diamond Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">金</div>
+        <p class="card-category">Mahayana · 大乘</p>
+        <div class="card-titles">
+          <span class="card-zh">金刚般若波罗蜜经</span>
+          <span class="card-en">Diamond Sutra</span>
+        </div>
+        <p class="card-desc">
+          A dialogue between the Buddha and his disciple Subhuti on non-attachment and the perfection of wisdom. Central to Zen/Chan Buddhism — the world's oldest printed book carries its text.
+        </p>
+        <div class="card-tags">
+          <span class="tag">无执 Non-attachment</span>
+          <span class="tag">禅 Zen/Chan</span>
+          <span class="tag">Wisdom</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 3. Lotus Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">莲</div>
+        <p class="card-category">Mahayana · 大乘</p>
+        <div class="card-titles">
+          <span class="card-zh">妙法莲华经</span>
+          <span class="card-en">Lotus Sutra</span>
+        </div>
+        <p class="card-desc">
+          Teaches that all beings, without exception, can attain Buddhahood. The most important sutra in China and Japan — foundational to Tiantai, Tendai, and Nichiren Buddhism.
+        </p>
+        <div class="card-tags">
+          <span class="tag">佛性 Buddha-nature</span>
+          <span class="tag">一乘 One Vehicle</span>
+          <span class="tag">天台宗</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 4. Avatamsaka Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">华</div>
+        <p class="card-category">Mahayana · 大乘</p>
+        <div class="card-titles">
+          <span class="card-zh">大方广佛华严经</span>
+          <span class="card-en">Avatamsaka Sutra</span>
+        </div>
+        <p class="card-desc">
+          The grandest of all Buddhist sutras. Describes the universe as an infinite web of interdependence — illustrated by Indra's Net, where every jewel reflects all others. Foundational to Huayan Buddhism.
+        </p>
+        <div class="card-tags">
+          <span class="tag">因陀罗网 Indra's Net</span>
+          <span class="tag">华严宗</span>
+          <span class="tag">Interdependence</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 5. Vimalakirti Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">维</div>
+        <p class="card-category">Mahayana · 大乘</p>
+        <div class="card-titles">
+          <span class="card-zh">维摩诘所说经</span>
+          <span class="card-en">Vimalakirti Sutra</span>
+        </div>
+        <p class="card-desc">
+          A wealthy layman outshines all of the Buddha's monk disciples in wisdom. Famous for Vimalakirti's "thunderous silence" when asked about non-duality — enlightenment is open to everyone, not just monastics.
+        </p>
+        <div class="card-tags">
+          <span class="tag">不二 Non-duality</span>
+          <span class="tag">居士 Layperson</span>
+          <span class="tag">Silence</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 6. Amitabha Sutra -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">阿</div>
+        <p class="card-category">Mahayana · 大乘 (Pure Land)</p>
+        <div class="card-titles">
+          <span class="card-zh">阿弥陀经</span>
+          <span class="card-en">Amitabha Sutra</span>
+        </div>
+        <p class="card-desc">
+          Describes the Western Pure Land of Amitabha Buddha — a paradise where all beings may be reborn and easily achieve enlightenment. Core text of Pure Land Buddhism, the most widely practised Buddhist school in East Asia.
+        </p>
+        <div class="card-tags">
+          <span class="tag">净土 Pure Land</span>
+          <span class="tag">阿弥陀佛</span>
+          <span class="tag">念佛 Nianfo</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 7. Dhammapada -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">法</div>
+        <p class="card-category">Theravada · 上座部</p>
+        <div class="card-titles">
+          <span class="card-zh">法句经</span>
+          <span class="card-en">Dhammapada</span>
+        </div>
+        <p class="card-desc">
+          423 verses of the Buddha's wisdom, organised into 26 themes. The most widely read Theravada text — accessible, direct, and timeless. Opens with: "Mind is the forerunner of all actions."
+        </p>
+        <div class="card-tags">
+          <span class="tag">423 Verses</span>
+          <span class="tag">心 Mind</span>
+          <span class="tag">Pali Canon</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 8. Sutta Nipata -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">慈</div>
+        <p class="card-category">Theravada · 上座部</p>
+        <div class="card-titles">
+          <span class="card-zh">经集</span>
+          <span class="card-en">Sutta Nipata</span>
+        </div>
+        <p class="card-desc">
+          One of the oldest Buddhist texts. A collection of discourses in verse and prose on ethics, renunciation, and wisdom. Contains the beloved Metta Sutta — the Buddha's teaching on loving-kindness toward all beings.
+        </p>
+        <div class="card-tags">
+          <span class="tag">慈悲 Loving-kindness</span>
+          <span class="tag">Metta Sutta</span>
+          <span class="tag">Early Buddhism</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+      <!-- 9. Bardo Thodol -->
+      <article class="site-card">
+        <div class="card-symbol" aria-hidden="true">中</div>
+        <p class="card-category">Vajrayana · 金刚乘</p>
+        <div class="card-titles">
+          <span class="card-zh">中阴得度</span>
+          <span class="card-en">Bardo Thodol</span>
+        </div>
+        <p class="card-desc">
+          The Tibetan Book of the Dead. A guide read aloud to the dying and recently deceased, describing the journey of consciousness through the bardo — the intermediate state between death and rebirth. Liberation lies in recognising the nature of mind.
+        </p>
+        <div class="card-tags">
+          <span class="tag">中阴 Bardo</span>
+          <span class="tag">Tibetan Buddhism</span>
+          <span class="tag">Death &amp; Rebirth</span>
+        </div>
+        <span class="coming-soon-badge">COMING SOON</span>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- ABOUT STRIP -->
+  <section class="about-strip" id="about">
+    <h2>About This Collection</h2>
+    <p>
+      The Dharma Gate brings together nine of Buddhism's most essential scriptures — spanning
+      the Theravada, Mahayana, and Vajrayana traditions. Each text is presented with its original
+      Chinese name, key teachings, and a study guide — as a personal companion for reading,
+      reflection, and practice.
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>The Dharma Gate · 法门 &nbsp;|&nbsp; A personal scripture study collection</p>
+  </footer>
+
+  <!-- PWA: Register service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+
+</body>
+</html>
