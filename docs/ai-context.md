@@ -8,13 +8,15 @@ Instructions for AI assistants working on this project.
 
 A static Buddhist scripture portal hosted on GitHub Pages. Hub-and-spoke model: one portal page links to nine scripture mini sites (separate GitHub repos). Same architecture as TheWayWithin.
 
-## Current state (as of 2026-04-12)
+## Current state (as of 2026-04-14)
 
 - Portal hub built: `index.html`, `manifest.json`, `sw.js`, icons
 - Logo subtitle: 法门无量 (Fǎmén Wúliàng)
-- 9 scripture cards present; Heart Sutra card is active with link to `https://lugh3456.github.io/HeartSutra/`; remaining 8 cards marked "COMING SOON"
-- Heart Sutra mini site fully built (see HeartSutra project docs)
-- Not yet deployed to GitHub Pages
+- 9 scripture cards present; Heart Sutra, Diamond Sutra, and Lotus Sutra cards are active; remaining 6 cards marked "COMING SOON"
+- Heart Sutra mini site fully built and deployed — https://lugh3456.github.io/HeartSutra/
+- Diamond Sutra mini site fully built and deployed — https://lugh3456.github.io/DiamondSutra/ (32 chapters)
+- Lotus Sutra mini site fully built — https://lugh3456.github.io/LotusSutra/ (28 chapters)
+- Portal deployed to GitHub Pages — https://lugh3456.github.io/DharmaGate/
 
 ## Design system
 
@@ -31,8 +33,8 @@ Fonts: Noto Serif SC (headings, Chinese), Noto Sans SC (body). Same as TheWayWit
 | # | English | Chinese | Tradition | Card symbol | Status |
 |---|---------|---------|-----------|-------------|--------|
 | 1 | Heart Sutra | 般若波罗蜜多心经 | Mahayana | 心 | Active |
-| 2 | Diamond Sutra | 金刚般若波罗蜜经 | Mahayana | 金 | Coming soon |
-| 3 | Lotus Sutra | 妙法莲华经 | Mahayana | 莲 | Coming soon |
+| 2 | Diamond Sutra | 金刚般若波罗蜜经 | Mahayana | 金 | Active |
+| 3 | Lotus Sutra | 妙法莲华经 | Mahayana | 莲 | Active |
 | 4 | Avatamsaka Sutra | 大方广佛华严经 | Mahayana | 华 | Coming soon |
 | 5 | Vimalakirti Sutra | 维摩诘所说经 | Mahayana | 维 | Coming soon |
 | 6 | Amitabha Sutra | 阿弥陀经 | Mahayana (Pure Land) | 阿 | Coming soon |
