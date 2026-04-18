@@ -35,7 +35,7 @@ Fonts: Noto Serif SC (headings, Chinese), Noto Sans SC (body). Same as TheWayWit
 | 1 | Heart Sutra | 般若波罗蜜多心经 | Mahayana | 心 | Active |
 | 2 | Diamond Sutra | 金刚般若波罗蜜经 | Mahayana | 金 | Active |
 | 3 | Lotus Sutra | 妙法莲华经 | Mahayana | 莲 | Active |
-| 4 | Avatamsaka Sutra | 大方广佛华严经 | Mahayana | 华 | Coming soon |
+| 4 | Avatamsaka Sutra | 大方广佛华严经 | Mahayana | 华 | Active |
 | 5 | Vimalakirti Sutra | 维摩诘所说经 | Mahayana | 维 | Coming soon |
 | 6 | Amitabha Sutra | 阿弥陀经 | Mahayana (Pure Land) | 阿 | Coming soon |
 | 7 | Dhammapada | 法句经 | Theravada | 法 | Coming soon |
