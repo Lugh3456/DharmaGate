@@ -8,14 +8,17 @@ Instructions for AI assistants working on this project.
 
 A static Buddhist scripture portal hosted on GitHub Pages. Hub-and-spoke model: one portal page links to nine scripture mini sites (separate GitHub repos). Same architecture as TheWayWithin.
 
-## Current state (as of 2026-04-14)
+## Current state (as of 2026-05-07)
 
 - Portal hub built: `index.html`, `manifest.json`, `sw.js`, icons
 - Logo subtitle: 法门无量 (Fǎmén Wúliàng)
-- 9 scripture cards present; Heart Sutra, Diamond Sutra, and Lotus Sutra cards are active; remaining 6 cards marked "COMING SOON"
+- 9 scripture cards present; 6 active, 3 still "COMING SOON"
 - Heart Sutra mini site fully built and deployed — https://lugh3456.github.io/HeartSutra/
 - Diamond Sutra mini site fully built and deployed — https://lugh3456.github.io/DiamondSutra/ (32 chapters)
-- Lotus Sutra mini site fully built — https://lugh3456.github.io/LotusSutra/ (28 chapters)
+- Lotus Sutra mini site fully built and deployed — https://lugh3456.github.io/LotusSutra/ (28 chapters)
+- Avatamsaka Sutra mini site fully built and deployed — https://lugh3456.github.io/HuayanSutra/
+- Vimalakirti Sutra mini site fully built and deployed — https://lugh3456.github.io/VimalakirtiSutra/
+- Amitabha Sutra mini site fully built and deployed — https://lugh3456.github.io/AmitabhaSutra/ (4 sections)
 - Portal deployed to GitHub Pages — https://lugh3456.github.io/DharmaGate/
 
 ## Design system
@@ -36,10 +39,10 @@ Fonts: Noto Serif SC (headings, Chinese), Noto Sans SC (body). Same as TheWayWit
 | 2 | Diamond Sutra | 金刚般若波罗蜜经 | Mahayana | 金 | Active |
 | 3 | Lotus Sutra | 妙法莲华经 | Mahayana | 莲 | Active |
 | 4 | Avatamsaka Sutra | 大方广佛华严经 | Mahayana | 华 | Active |
-| 5 | Vimalakirti Sutra | 维摩诘所说经 | Mahayana | 维 | Coming soon |
-| 6 | Amitabha Sutra | 阿弥陀经 | Mahayana (Pure Land) | 阿 | Coming soon |
+| 5 | Vimalakirti Sutra | 维摩诘所说经 | Mahayana | 维 | Active |
+| 6 | Amitabha Sutra | 阿弥陀经 | Mahayana (Pure Land) | 阿 | Active |
 | 7 | Dhammapada | 法句经 | Theravada | 法 | Coming soon |
-| 8 | Sutta Nipata | 经集 | Theravada | 慈 | Coming soon |
+| 8 | Sutta Nipata | 经集 | Theravada | 慈 | Active — https://lugh3456.github.io/SuttaNipata/ |
 | 9 | Bardo Thodol | 中阴得度 | Vajrayana | 中 | Coming soon |
 
 ## How to activate a card (when a mini site is ready)
