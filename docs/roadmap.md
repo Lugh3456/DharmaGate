@@ -24,9 +24,9 @@
 
 - [x] Diamond Sutra 金刚经 — built (32 chapters), deployed https://lugh3456.github.io/DiamondSutra/, card activated on portal
 - [x] Lotus Sutra 法华经 — built (28 chapters), deployed https://lugh3456.github.io/LotusSutra/, card activated on portal
-- [ ] Avatamsaka Sutra 华严经
-- [ ] Vimalakirti Sutra 维摩诘经
-- [ ] Amitabha Sutra 阿弥陀经
+- [x] Avatamsaka Sutra 华严经 — built, deployed https://lugh3456.github.io/HuayanSutra/, card activated
+- [x] Vimalakirti Sutra 维摩诘经 — built, deployed https://lugh3456.github.io/VimalakirtiSutra/, card activated
+- [x] Amitabha Sutra 阿弥陀经 — built (4 sections), deployed https://lugh3456.github.io/AmitabhaSutra/, card activated
 - [ ] Dhammapada 法句经
 - [ ] Sutta Nipata 经集
 - [ ] Bardo Thodol 中阴得度
