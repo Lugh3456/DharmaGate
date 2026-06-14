@@ -43,7 +43,7 @@ Fonts: Noto Serif SC (headings, Chinese), Noto Sans SC (body). Same as TheWayWit
 | 6 | Amitabha Sutra | 阿弥陀经 | Mahayana (Pure Land) | 阿 | Active |
 | 7 | Dhammapada | 法句经 | Theravada | 法 | Coming soon |
 | 8 | Sutta Nipata | 经集 | Theravada | 慈 | Active — https://lugh3456.github.io/SuttaNipata/ |
-| 9 | Bardo Thodol | 中阴得度 | Vajrayana | 中 | Coming soon |
+| 9 | Bardo Thodol | 中阴得度 | Vajrayana | 中 | Active — https://lugh3456.github.io/BardoThodol/ |
 
 ## How to activate a card (when a mini site is ready)
 
