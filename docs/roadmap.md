@@ -29,7 +29,7 @@
 - [x] Amitabha Sutra 阿弥陀经 — built (4 sections), deployed https://lugh3456.github.io/AmitabhaSutra/, card activated
 - [ ] Dhammapada 法句经
 - [ ] Sutta Nipata 经集
-- [ ] Bardo Thodol 中阴得度
+- [x] Bardo Thodol 中阴得度 — built (11 sections), deployed https://lugh3456.github.io/BardoThodol/, card activated on portal
 
 ## Phase 4 — App packaging
 
